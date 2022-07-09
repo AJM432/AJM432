@@ -54,14 +54,6 @@ nmap <F8> :TagbarToggle<CR>
 :colorscheme molokai
 hi Normal guibg=NONE ctermbg=NONE "set transparent
 
-"--- Just Some Notes ---
-" :PlugClean :PlugInstall :UpdateRemotePlugins
-"
-" :CocInstall coc-python
-" :CocInstall coc-clangd
-" :CocInstall coc-snippets
-" :CocCommand snippets.edit... FOR EACH FILE TYPE
-
 " air-line
 let g:airline_powerline_fonts = 1
 
