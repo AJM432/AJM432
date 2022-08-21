@@ -1,3 +1,3 @@
 ### Hi there 👋
 
-![](https://komarev.com/ghpvc/?username=AJM432&style=for-the-badge&color=brightgreen)
+![](https://komarev.com/ghpvc/?username=AJM432&style=for-the-badge&color=blue)
