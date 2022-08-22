@@ -7,11 +7,11 @@
     <a href="mailto:alvinjosematthew@gmail.com">
       <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></img>
     </a>
-    <a href="https://dev.to/ajm432">
-      <img src="https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white"></img>
-    </a>
     <a href="https://alvinmatthew.me">  
       <img src="https://img.shields.io/static/v1?label=Portfolio&message=%3C%3E&color=red&style=for-the-badge"></img>
+    </a>
+    <a href="https://dev.to/ajm432">
+      <img src="https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white"></img>
     </a>
   </div>
 
