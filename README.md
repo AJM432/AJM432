@@ -10,8 +10,8 @@
     <a href="https://alvinmatthew.me">  
       <img src="https://img.shields.io/static/v1?label=Portfolio&message=%3C%3E&color=brightgreen&style=for-the-badge"></img>
     </a>
-    <a href="https://dev.to/ajm432">
-      <img src="https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white"></img>
+    <a href="https://https://blog.alvinmatthew.me/">
+      <img src="https://img.shields.io/badge/Hashnode-2962FF?style=for-the-badge&logo=hashnode&logoColor=white"></img>
     </a>
   </div>
 
