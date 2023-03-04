@@ -1,3 +1,35 @@
+nmap j gj
+nmap k gk
+
+:filetype indent on
+:set filetype=html           
+:set smartindent            
+
+" " Coc completion fix ---------
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" " remap for complete to use tab and <cr>
+" inoremap <silent><expr> <TAB>
+" \ coc#pum#visible() ? coc#pum#next(1):
+" \ <SID>check_back_space() ? "\<Tab>" :
+" \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" inoremap <silent><expr> <c-space> coc#refresh()
+" " Coc completion fix ---------
+
+" spell autocomplete
+inoremap <expr> <c-x><c-k> SpellCheck("\<c-x>\<c-k>")
+nnoremap z= :<c-u>call SpellCheck()<cr>z=
+function! SpellCheck(...)
+  let s:spell_restore = &spell
+  set spell
+  augroup restore_spell_option
+    autocmd!
+    autocmd CursorMoved,CompleteDone <buffer> let &spell = s:spell_restore | autocmd! restore_spell_option
+  augroup END
+  return a:0 ? a:1 : ''
+endfunction
+
 :set relativenumber
 :set autoindent
 :set tabstop=4
@@ -25,7 +57,6 @@ Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple c
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/jiangmiao/auto-pairs' "Close brackets
-
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -34,8 +65,12 @@ Plug 'jesseleite/vim-noh'
 Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'lervag/vimtex'
 Plug 'davidhalter/jedi-vim'
+Plug 'hashrocket/vim-macdown'
+
 
 call plug#end()
+
+" autocmd BufWritePost *.md exec :MacDownPreview
 
 set encoding=UTF-8
 nnoremap <C-f> :FZF<CR>
@@ -63,29 +98,60 @@ nnoremap <C-_> :VimtexErrors<CR>
 set clipboard=unnamed
 
 nmap <C-k> :TagbarToggle <CR>
+
 :set completeopt-=preview " For No Previews
 
-:colorscheme gruvbox
+:colorscheme deus
 
-hi Normal guibg=NONE ctermbg=NONE "set transparent
+" hi Normal guibg=NONE ctermbg=NONE "set transparent
 
 " air-line
 let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+set t_Co=256
 
-inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.colnr = ' ㏇:'
+  let g:airline_symbols.colnr = ' ℅:'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.linenr = ' ␊:'
+  let g:airline_symbols.linenr = ' ␤:'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.maxlinenr = '㏑'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = 'Ɇ'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+  " let g:airline_left_sep = ''
+  " let g:airline_left_alt_sep = ''
+  " let g:airline_right_sep = ''
+  " let g:airline_right_alt_sep = ''
+  " let g:airline_symbols.branch = ''
+  " let g:airline_symbols.colnr = ' ℅:'
+  " let g:airline_symbols.readonly = ''
+  " let g:airline_symbols.linenr = ' :'
+  " let g:airline_symbols.maxlinenr = '☰ '
+  " let g:airline_symbols.dirty='⚡'
+
+" inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+" g:coc_disable_startup_warning = 0
+" let g:coc_force_debug = 1
 
 let g:neoterm_default_mod='belowright' " open terminal in bottom split
 let g:neoterm_size=16 " terminal split size
@@ -99,6 +165,7 @@ autocmd FileType python map <buffer> <C-c> :w<CR>:exec '!python3' shellescape(@%
 autocmd FileType python imap <buffer> <C-c> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 lua << EOF
+
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "c", "lua", "rust", "python", "cpp", "javascript"},
