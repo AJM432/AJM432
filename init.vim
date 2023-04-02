@@ -29,6 +29,9 @@ function! SpellCheck(...)
   augroup END
   return a:0 ? a:1 : ''
 endfunction
+"
+" Enable Omnicomplete features
+set omnifunc=syntaxcomplete#Complete
 
 :set relativenumber
 :set autoindent
