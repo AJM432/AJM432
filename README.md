@@ -14,5 +14,4 @@
     </a>
   </div>
 
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=AJM432&theme=onedark&hide_border=false)](https://git.io/streak-stats)
 </div>
